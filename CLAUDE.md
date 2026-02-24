@@ -34,25 +34,25 @@ Claude Code を活用し、専門化されたAIエージェントが分業・連
 ### 1. 要件定義・設計フェーズ
 ```bash
 # アーキテクトが要件を分析し、各エージェントにタスク分解
-Read agents/architect.md and analyze requirements, then create implementation tasks
+/agent-architect [機能名]の要件を分析してタスクに分解してください
 ```
 
 ### 2. 並行開発フェーズ
 ```bash
 # フロントエンド実装
-Read agents/frontend.md and docs/context/frontend-context.md, then implement [component]
+/agent-frontend [コンポーネント名]を実装してください
 
 # バックエンド実装
-Read agents/backend.md and docs/context/backend-context.md, then implement [API]
+/agent-backend [API名]を実装してください
 
 # インフラ構築
-Read agents/devops.md and docs/context/devops-context.md, then setup [environment]
+/agent-devops [環境名]を構築してください
 ```
 
 ### 3. 統合・テストフェーズ
 ```bash
 # QAが全体テスト実行
-Read agents/qa.md and create comprehensive tests for the application
+/agent-qa アプリケーション全体の包括的なテストを作成してください
 ```
 
 ## 🛠️ 技術スタック標準
@@ -117,7 +117,19 @@ SCHEDULE.md のステータス管理：
 - **実装レビュー**: 各エージェントが専門領域をレビュー
 - **品質レビュー**: QAが最終品質を確認
 
-## 🚀 スラッシュコマンド活用
+## 🚀 Skills・コマンド活用
+
+### エージェント Skills（サブエージェントに委譲）
+
+| スキル | 目的 | 実行タイミング |
+|--------|------|---------------|
+| `/agent-architect` | 設計・技術選定・タスク分解 | 新機能開発開始時・設計レビュー時 |
+| `/agent-frontend` | React + TypeScript + Vite 実装 | UIコンポーネント・フック実装時 |
+| `/agent-backend` | Go + GORM + MySQL 実装 | API・DB・認証実装時 |
+| `/agent-devops` | Docker・CI/CD・Nginx 設定 | インフラ構築・デプロイ設定時 |
+| `/agent-qa` | テスト作成・品質確認 | 機能実装完了後・品質チェック時 |
+
+### プロジェクト管理コマンド
 
 | コマンド | 目的 | 実行タイミング |
 |----------|------|---------------|

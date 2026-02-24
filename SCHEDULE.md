@@ -30,21 +30,24 @@
 - [ ] セキュリティテスト
 
 ### 📁 Phase 5: デプロイ・運用
-- [ ]本番環境構築
+- [ ] 本番環境構築
 - [ ] CI/CDパイプライン
-- [ ]監視・ログ設定
+- [ ] 監視・ログ設定
 - [ ] ドキュメント整備
 
 ## 🚀 Next Action
 ```bash
-# 次に実行すべきコマンド
-Read agents/architect.md and design the initial project structure
+# アーキテクトによる設計
+/agent-architect Docker開発環境・DBスキーマ・API仕様を設計してください
+
+# DevOpsによる環境構築
+/agent-devops Docker開発環境を構築してください
 ```
 
 ## 📊 進捗状況
 - **全体進捗**: 5%
 - **現在フェーズ**: Phase 1 (基盤整備)
-- **アクティブタスク**: AI組織構造設計
+- **アクティブタスク**: なし（次: Docker開発環境構築）
 
 ## 🏗️ 開発中の機能
 現在開発中の機能はありません。

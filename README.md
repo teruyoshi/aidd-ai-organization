@@ -15,19 +15,19 @@ Claude Code を使って、専門化されたSubAgentが分業しながらアプ
 
 ```bash
 # アーキテクチャ設計
-Read agents/architect.md and design the DB schema for [機能名]
+/agent-architect [機能名]のDBスキーマを設計してください
 
 # フロントエンド実装
-Read agents/frontend.md and docs/context/frontend-context.md, then implement [コンポーネント名]
+/agent-frontend [コンポーネント名]を実装してください
 
 # バックエンド実装
-Read agents/backend.md and docs/context/backend-context.md, then implement [API名]
+/agent-backend [API名]を実装してください
 
 # インフラ構築
-Read agents/devops.md and docs/context/devops-context.md, then create docker-compose.dev.yml
+/agent-devops docker-compose.dev.yml を作成してください
 
 # テスト作成
-Read agents/qa.md and write tests for [対象ファイル]
+/agent-qa [対象ファイル]のテストを作成してください
 ```
 
 ## AI組織構成
@@ -41,7 +41,19 @@ Read agents/qa.md and write tests for [対象ファイル]
 └── 🧪  QA             — テスト戦略・テストコード
 ```
 
-## スラッシュコマンド一覧
+## Skills・コマンド一覧
+
+### エージェント Skills
+
+| スキル | 説明 |
+|--------|------|
+| `/agent-architect` | 設計・技術選定・タスク分解 |
+| `/agent-frontend` | React + TypeScript + Vite 実装 |
+| `/agent-backend` | Go + GORM + MySQL 実装 |
+| `/agent-devops` | Docker・CI/CD・Nginx 設定 |
+| `/agent-qa` | テスト作成・品質確認 |
+
+### プロジェクト管理コマンド
 
 | コマンド | 説明 |
 |----------|------|
@@ -54,18 +66,31 @@ Read agents/qa.md and write tests for [対象ファイル]
 
 ```
 .
-├── CLAUDE.md                    # 組織憲法（必ず最初に読まれる）
-├── SCHEDULE.md                # タスク・進捗管理
+├── CLAUDE.md                    # 組織憲法（常時読み込み）
+├── SCHEDULE.md                  # タスク・進捗管理
 ├── .claude/
-│   ├── commands/                # スラッシュコマンド定義
-│   └── settings.json           # MCP設定
-├── agents/                     # SubAgent定義
+│   ├── commands/                # プロジェクト管理コマンド（4個）
+│   │   ├── project-plan.md
+│   │   ├── project-review.md
+│   │   ├── project-api-doc.md
+│   │   └── project-migrate.md
+│   ├── skills/                  # エージェントSkills・自動知識（8個）
+│   │   ├── agent-architect/
+│   │   ├── agent-frontend/
+│   │   ├── agent-backend/
+│   │   ├── agent-devops/
+│   │   ├── agent-qa/
+│   │   ├── react-coding-standards/
+│   │   ├── go-coding-standards/
+│   │   └── schedule-tracking/
+│   └── settings.json            # 権限・フック設定
+├── agents/                      # エージェント詳細定義（Skillsから参照）
 │   ├── architect.md
 │   ├── frontend.md
 │   ├── backend.md
 │   ├── devops.md
 │   └── qa.md
-└── docs/context/               # 技術コンテキスト
+└── docs/context/                # 技術コンテキスト（Skillsから参照）
     ├── frontend-context.md
     ├── backend-context.md
     └── devops-context.md
@@ -93,5 +118,5 @@ SCHEDULE.md の記法：
 
 1. `CLAUDE.md` を確認して組織憲法を理解
 2. `/project:plan` でタスクを確認
-3. 各エージェント指示でSubAgentに作業依頼
+3. `/agent-xxx` Skills でサブエージェントに作業を委譲
 4. `SCHEDULE.md` で進捗を管理
